@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="maskService.js"></script>
+	<script type="text/javascript" src="maskFilter.js"></script>
+	<script type="text/javascript" src="maskDirective.js"></script>
+	
+</head>
+<body data-ng-app="testApp">
+	<form name="phone">
+	<input name="phoneNumber" data-ng-model='phoneNumber' input-mask='(___) ___ - __ - __' input-value-type='number' input-value-mask='_' mask/>
+	<div class="error" ng-show="phone.phoneNumber.$dirty && phone.phoneNumber.$invalid">
+		<small class="error" ng-show="phone.phoneNumber.$error.maskValid">
+			Phone number is invalid
+		</small>
+	</div>
+	</form>
+	<div>
+		<span data-ng-bind="phoneNumber"></span>
+	</div>	
+	<div>
+		<span data-ng-bind="phoneNumber | maskFilter:'(___) ___ - __ - __':'_'" ></span>
+	</div>	
+</body>
+</html>
